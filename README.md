@@ -80,13 +80,13 @@ Resposta esperada:
 
 ## Conexao com o banco (DBeaver ou similar)
 
-| Campo    | Valor       |
-| -------- | ----------- |
-| Host     | localhost   |
-| Porta    | 5432        |
-| Database | finance_app |
-| Usuario  | postgres    |
-| Senha    | postgres    |
+| Campo    | Valor            |
+| -------- | ---------------- |
+| Host     | localhost        |
+| Porta    | 5432             |
+| Database | DB_NAME.env      |
+| Usuario  | DB_USER .env     |
+| Senha    | DB_PASSWORD .env |
 
 ## Comandos uteis
 
@@ -131,19 +131,3 @@ finance-app/
 └── infra/
     └── nginx/nginx.conf        # Proxy reverso com suporte a SSE
 ```
-
-## Variaveis de ambiente
-
-As variaveis sao definidas no `.env` da raiz e lidas automaticamente pelo Docker Compose.
-Copie o `.env.example` para criar o seu:
-
-| Variavel    | Padrao      | Descricao                 |
-| ----------- | ----------- | ------------------------- |
-| DB_HOST     | db          | Host do PostgreSQL        |
-| DB_PORT     | 5432        | Porta do PostgreSQL       |
-| DB_USER     | postgres    | Usuario do banco          |
-| DB_PASSWORD | postgres    | Senha do banco            |
-| DB_NAME     | finance_app | Nome do banco de dados    |
-| REDIS_HOST  | redis       | Host do Redis             |
-| REDIS_PORT  | 6379        | Porta do Redis            |
-| APP_PORT    | 8080        | Porta interna do servidor |
