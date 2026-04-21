@@ -1,0 +1,20 @@
+# Variaveis de ambiente
+.env
+
+# Log de build do Air (gerado em backend/ durante hot reload)
+air_build.log
+
+# Binarios compilados localmente (fora do container)
+backend/server
+
+# Cobertura de testes
+*.out
+*.html
+
+# IDEs
+.idea/
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
