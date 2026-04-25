@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -47,6 +48,14 @@ func main() {
 	if err != nil {
 		log.Fatalf("redis: %v", err)
 	}
+
+	// Migrations: descomentar o bloco abaixo quando o primeiro arquivo .sql
+	// for criado em backend/migrations/ e a diretiva //go:embed *.sql for
+	// adicionada em backend/migrations/embed.go.
+	//
+	// if err := database.RunMigrations(db); err != nil {
+	// 	log.Fatalf("migrations: %v", err)
+	// }
 
 	// Injecao de dependencias manual: cada camada recebe apenas a interface
 	// da camada abaixo, nunca a implementacao concreta. Isso e equivalente
@@ -84,7 +93,7 @@ func main() {
 	}()
 
 	quit := make(chan os.Signal, 1)
-	signal.Notify(quit, os.Interrupt)
+	signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
 	<-quit
 
 	// Graceful shutdown: da ate 10 segundos para requisicoes em andamento
